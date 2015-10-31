@@ -5,6 +5,18 @@ button {
   border: none;
   background: rgb(255,255,255);
   background: rgba(255,255,255,.3);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button:disabled {
+  color: rgb(150,100,100);
+  background: rgb(255,255,255);
+  background: rgba(255,255,.5);
+}
+
+th {
+  font-size: 3rem;
 }
 
 /* end my rules */
