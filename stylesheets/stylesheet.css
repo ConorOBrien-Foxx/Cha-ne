@@ -3,11 +3,11 @@
 button {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   border: none;
-  background: rgb(255,255,255;
+  background: rgb(255,255,255);
   background: rgba(255,255,255,.3);
 }
 
-/* /my rules */
+/* end my rules */
 
 body {
   margin: 0;
