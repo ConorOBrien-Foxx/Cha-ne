@@ -31,8 +31,24 @@
         <h1>
 <a id="interpreter" class="anchor" href="#interpreter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interpreter</h1>
 
+<table>
+<tr>
+	<td>Code</td>
+	<td>Input</td>
+	<td>Output</td>
+</tr>
+<tr>
+	<td id="code" contenteditable>Hello, world!</td>
+	<td id="input" contenteditable>"hello" 5</td>
+	<td id="output"></td>
+</tr>
+</table>
+<button id="set" onclick="set()">Set code</button>
+<button id="run" onclick="instance.run()" disabled>Run code</button>
+<button id="step" onclick="outStep()" disabled>Step</button>
 <h2>
 <a id="statistics" class="anchor" href="#statistics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Statistics</h2>
+<div id="stats"></div>
       </section>
     </div>
 
