@@ -2,6 +2,8 @@
 ## A string-friendly langauge
 Everything is implicitly treated as a string character, and the strings are printed implicitly after execution. If you want to perform commands, you must enclose them within `{...}`. To use `{`, `}`, use the escape character `\`. Or, if you simply wish to use a single command, you use the vertical bar character `|`. To use shorthand for a word, use the `:...:`. This will write that sequence to the current string. 
 
+Please note that, in its current state, the interpreter will only run very few samples of code.
+
 
     <    push current string to the stack
     >    pop current string for writing
