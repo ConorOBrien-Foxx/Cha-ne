@@ -23,10 +23,13 @@ button:disabled {
 textarea {
   background: rgba(0,0,0,0);
   border: none;
+  color: white;
+  font-size: 18px;
+  resize: vertical;
 }
 
 th {
-  font-size: 3rem;
+  font-size: 24rem;
 }
 
 /* end my rules */
