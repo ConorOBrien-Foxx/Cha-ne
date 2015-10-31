@@ -266,7 +266,7 @@ window.addEventListener("load",function(){
 	run    = document.getElementById("run");
 	step.disabled = true;
 	run.disabled = true;
-	q=window.location.href;o={};q=q.slice(q.indexOf("?")+1,q.length).split("||").map(function(e){var f=e.split("=");o[f[0]]=f[1];return o});
+	q=decodeURIComponent(window.location.href.replace(/\+/g,  " "));o={};q=q.slice(q.indexOf("?")+1,q.length).split("||").map(function(e){var f=e.split("=");o[f[0]]=f[1];return o});
 	if(o.code) code.value = o.code;
 	if(o.input) input.value = o.input;
 });
