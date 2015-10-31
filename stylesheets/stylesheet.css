@@ -7,6 +7,11 @@ button {
   background: rgba(255,255,255,.3);
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(255,255,.5);
 }
 
 button:disabled {
