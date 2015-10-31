@@ -20,6 +20,11 @@ button:disabled {
   background: rgba(255,255,255,.5);
 }
 
+textarea {
+  background: rgba(0,0,0,0);
+  border: none;
+}
+
 th {
   font-size: 3rem;
 }
