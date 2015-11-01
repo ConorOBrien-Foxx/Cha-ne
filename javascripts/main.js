@@ -222,6 +222,9 @@ cmd = {
 	},
 	"N": function(o){
 		o.stack.push(""+o.stack.pop());
+	},
+	"=": function(o){
+		o.stack.push(+(o.stack.pop()==o.curStr));
 	}
 }
 
