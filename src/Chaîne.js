@@ -111,11 +111,7 @@ function getEntry(word){
 }
 
 function fromEntry(b93){
-	str = "!\"#$%&'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}";
-	b93 = b93.split("").map(function(e){
-		return str.search("\\"+e);
-	});
-	return wordList[fromBaseArr(b93,93)];
+	return wordList[fromBase93(b93)];
 }
 
 function repeat(str,times){
