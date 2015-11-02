@@ -35,7 +35,8 @@ Within this "command set", you can use the following expressions:
 	n		converts string to number
 	N		converts number to string
 	(…) 	loop until top of stack is zero
-	[…]		
+	[…]		
+	=		pushes 1 if top of stack is equal to current string
 	
 
 To use shorthand for a word, use the :...:. This will write that sequence to the current string
@@ -59,7 +60,9 @@ function toBaseArr(n,b){
 
 function fromBaseArr(a,b){
 	f = 0;
+	console.log(a,b);
 	a.reverse().map(function(e,i){
+		console.log(e*Math.pow(b,i));
 		return f+=e*Math.pow(b,i);
 	});
 	return f;
@@ -68,6 +71,37 @@ function fromBaseArr(a,b){
 function toBase93(number){
 	 str = "!\"#$%&'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}";
 	 return toBaseArr(number,93).map(function(e){return str[e]}).join("");
+}
+
+function check(a,b){
+	if(Array.isArray(b)&&b.length>1){
+		return check(a,b.pop())||check(a,b);
+	} else {
+		if(b==a) return true;
+		return false;
+	}
+}
+
+function fromBase93(a){
+	str = "!\"#$%&'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}";
+	a=a.split("").map(function(e){
+		var escp = check(e,"nsStdDwW0123456789".split(""));
+		return str.search((escp?"\\":"")+e);
+	});
+	console.log(a);
+	return fromBaseArr(a,93);
+}
+
+function alph(number,str){	
+	str = str || "\"#$%&'()*+,-./0123456789:" + 
+	             ";<=>?@ABCDEFGHIJKLMNOPQRST" + 
+	             "UVWXYZ[\\]_`abcdefghijklmn" +
+				 "opqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª" +
+				 "«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄ" +
+				 "ÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ" + 
+				 "ßàáâãäåæçèéêëìíîïðñòóôõö÷ø" +
+				 "ùúûüýþÿ";
+	
 }
 
 function getEntry(word){
@@ -209,12 +243,19 @@ cmd = {
 	},
 	"?": function(o){
 		if(!o.stack.pop()){
-			index++;
+			o.stack.index++;
 		}
 	},
 	"s": function(o){
 		if(o.checkTypes("number","string","string")){
-			
+			// pops an integer (a), top string (s), next string (t) and puts t at every ath index in s (num,str,str)
+			var n = o.stack.pop();
+			var t = o.stack.pop();
+			var s = o.stack.pop();
+			r = new RegExp(".{1,"+n+"}","g");
+			console.log(s,r,t,s.match(r));
+			s=s.match(r).join(t);
+			o.stack.push(s);
 		}
 	},
 	"n": function(o){
@@ -341,6 +382,9 @@ Chaine.prototype.step = function(){
 					case ":":
 						this.mode = 4;
 					break;
+					case "^":
+						this.mode = 5;
+					break;
 					default:
 						this.curStr += this.code[this.index];
 					break;
@@ -361,6 +405,15 @@ Chaine.prototype.step = function(){
 			break;
 			case 4:
 				if(this.code[this.index]==":"){
+					this.mode = 1;
+					this.curStr += fromEntry(this.baseStr);
+					this.baseStr = "";
+				} else {
+					this.baseStr += this.code[this.index];
+				}
+			break;
+			case 5:
+				if(this.code[this.index]=="^"){
 					this.mode = 1;
 					this.curStr += fromEntry(this.baseStr);
 					this.baseStr = "";
