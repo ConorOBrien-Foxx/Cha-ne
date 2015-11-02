@@ -60,9 +60,7 @@ function toBaseArr(n,b){
 
 function fromBaseArr(a,b){
 	f = 0;
-	console.log(a,b);
 	a.reverse().map(function(e,i){
-		console.log(e*Math.pow(b,i));
 		return f+=e*Math.pow(b,i);
 	});
 	return f;
@@ -85,8 +83,7 @@ function check(a,b){
 function fromBase93(a){
 	str = "!\"#$%&'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}";
 	a=a.split("").map(function(e){
-		var escp = check(e,"nsStdDwW0123456789".split(""));
-		return str.search((escp?"\\":"")+e);
+		return str.indexOf(e);
 	});
 	console.log(a);
 	return fromBaseArr(a,93);
