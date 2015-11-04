@@ -20,6 +20,26 @@ button:disabled {
   background: rgba(255,255,255,.5);
 }
 
+
+
+#progCont {
+	height: 20px;
+	background: #eee;
+}
+
+#prog {
+	height: 20px;
+	background: green;
+	width: 0%;
+}
+
+#disp td {
+	width: 1ch;
+	border: none;
+	height: 1em;
+	font-family: Consolas;
+}
+
 td {
   min-width: 350px;
 }
@@ -52,7 +72,7 @@ body {
 
 .container {
   width: 90%;
-  max-width: 600px;
+  /*max-width: 600px;*/
   margin: 0 auto;
 }
 
