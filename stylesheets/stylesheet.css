@@ -49,7 +49,7 @@ textarea {
   border: none;
   color: white;
   font-size: 18px;
-  resize: vertical;
+  width: 100%;
 }
 
 th {
