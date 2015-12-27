@@ -20,7 +20,9 @@ button:disabled {
   background: rgba(255,255,255,.5);
 }
 
-
+#output {
+	whitespace: pre;
+}
 
 #progCont {
 	height: 20px;
