@@ -331,7 +331,7 @@ cmd = {
 		var repl = o.stack.pop() || "";
 		o.curStr = o.curStr.replace(regex,repl);
 		o.index = o.code[o.index-1]=="{"?f+2:f;
-		o.index+=2;
+		o.index++;
 		// ensure wrapping
 		var func = o.code[o.index];
 		var comm = o.get(func);
